@@ -36,6 +36,9 @@ import androidx.compose.ui.graphics.Color
 import com.example.wiprodemo.presentation.viewmodel.HomeUiState
 
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import coil.compose.AsyncImage
 
 private const val RESULT_MESSAGE = "User return from home screen"
 
@@ -141,13 +144,24 @@ fun HomeScreen(
                         items(users){ user ->
 
                             Card(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
-                                Column(
-                                    modifier = Modifier.padding(16.dp)
-                                ) {
-                                    Text(text = "${user.id}", color = Color.White)
-                                    Text(text = "${user.name}", color = Color.White)
-                                    Text(text = "${user.email}", color = Color.White)
-                                }
+                               Row(modifier = Modifier.fillMaxWidth().padding(16.dp),
+                                   verticalAlignment = Alignment.CenterVertically) {
+
+                                   AsyncImage(
+                                       model = "https://i.pravatar.cc/150?img=${user.id}",
+                                       contentDescription = "user_icon",
+                                       modifier = Modifier.size(60.dp)
+                                           .clip(CircleShape)
+                                   )
+                                   Spacer(modifier = Modifier.height(16.dp))
+                                   Column(
+                                       modifier = Modifier.padding(16.dp)
+                                   ) {
+                                       Text(text = "${user.id}", color = Color.White)
+                                       Text(text = "${user.name}", color = Color.White)
+                                       Text(text = "${user.email}", color = Color.White)
+                                   }
+                               }
                             }
 
                         }

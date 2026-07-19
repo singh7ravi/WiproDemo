@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.okhttp.logging)
     implementation(libs.kotlinx.serialization)
     implementation(libs.hilt.android)
+    implementation(libs.coil.compose)
     implementation(libs.retrofit.gson)
     implementation(libs.gson)
     ksp(libs.hilt.compiler)
