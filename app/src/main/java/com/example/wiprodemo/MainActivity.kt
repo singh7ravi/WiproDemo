@@ -11,20 +11,30 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.wiprodemo.presentation.navigation.AppNavHost
 import com.example.wiprodemo.ui.theme.WiproDemoTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             WiproDemoTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+               /* Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
-                }
+                }*/
+                val navController = rememberNavController()
+
+                AppNavHost(
+                    navHostController = navController
+                )
             }
         }
     }
